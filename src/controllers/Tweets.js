@@ -3,9 +3,9 @@ const Tweet = require('../models/Tweet').default;
 module.exports.tweetsCount = (req, res, next) => {
   Tweet.find()
     .estimatedDocumentCount()
-    .exec((err, response) => {
+    .exec((err, documents) => {
       if (err) return next(err);
-      res.send({ count: response });
+      res.send({ value: documents });
     });
 };
 

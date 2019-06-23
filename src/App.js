@@ -2,6 +2,7 @@ const logger = require('morgan');
 const errorhandler = require('errorhandler');
 const express = require('express');
 const mongoose = require('mongoose');
+const cors = require('cors');
 
 const { json } = require('body-parser');
 const { connect } = require('mongoose');
@@ -24,6 +25,7 @@ loadMiddlewares = (app) => {
   app.use(logger('dev'));
   app.use(json());
   app.use(errorhandler());
+  app.use(cors());
   mongoose.Promise = global.Promise;
 };
 
