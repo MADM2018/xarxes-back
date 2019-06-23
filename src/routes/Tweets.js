@@ -1,7 +1,7 @@
-const { get, getById } = require('../controllers/Tweets');
+const { tweetsCount, getById } = require('../controllers/Tweets');
 
 const TweetsRoutes = (app) => {
-  app.get('/tweets', get);
+  app.get('/tweetsCount', tweetsCount);
   app.get('/tweets/:id', getById);
 };
 

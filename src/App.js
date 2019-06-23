@@ -11,6 +11,7 @@ const TweetsRoutes = require('./routes/Tweets').default;
 
 const App = (config) => {
   const app = express();
+  mongoose.set('debug', config.debug);
 
   loadMiddlewares(app);
   loadRoutes(app);
