@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 
-const Tweet = mongoose.model('Tweet', {
+const User = mongoose.model('User', {
   id: Number,
   text: String,
 });
 
-module.exports.default = Tweet;
+module.exports.default = User;
