@@ -9,6 +9,8 @@ const { connect } = require('mongoose');
 
 // routes
 const TweetsRoutes = require('./routes/Tweets').default;
+const ProfilesRoutes = require('./routes/Profiles').default;
+const AnalyticsRoutes = require('./routes/Analytics').default;
 
 const App = (config) => {
   const app = express();
@@ -31,6 +33,8 @@ loadMiddlewares = (app) => {
 
 loadRoutes = (app) => {
   TweetsRoutes(app);
+  ProfilesRoutes(app);
+  AnalyticsRoutes(app);
 };
 
 module.exports.default = App;
