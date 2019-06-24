@@ -15,3 +15,10 @@ module.exports.getAll = (req, res, next) => {
     res.send(result);
   });
 };
+
+module.exports.insertProfiles = (req, res, next) => {
+  Profile.insertMany(req.body.data, (err, result) => {
+    if (err) return next(err);
+    res.send(result);
+  });
+};

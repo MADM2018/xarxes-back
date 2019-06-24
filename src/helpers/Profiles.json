@@ -1,0 +1,74 @@
+{
+  "data": [
+    {
+      "id": "158342368",
+      "name": "Pablo Iglesias Turrión",
+      "party": "PODEMOS",
+      "type": "leader",
+      "url": "https://twitter.com/Pablo_Iglesias_"
+    },
+    {
+      "id": "2288138575",
+      "name": "PODEMOS",
+      "party": "PODEMOS",
+      "type": "party",
+      "url": "https://twitter.com/ahorapodemos"
+    },
+    {
+      "id": "68740712",
+      "name": "Pedro Sánchez",
+      "party": "PSOE",
+      "type": "leader",
+      "url": "https://twitter.com/sanchezcastejon"
+    },
+    {
+      "id": "50982086",
+      "name": "PSOE",
+      "party": "PSOE",
+      "type": "party",
+      "url": "https://twitter.com/psoe"
+    },
+    {
+      "id": "523386042",
+      "name": "Pablo Casado Blanco",
+      "party": "PP",
+      "type": "leader",
+      "url": "https://twitter.com/pablocasado_"
+    },
+    {
+      "id": "20509689",
+      "name": "PP",
+      "party": "PP",
+      "type": "party",
+      "url": "https://twitter.com/ppopular"
+    },
+    {
+      "id": "108994652",
+      "name": "Albert Rivera",
+      "party": "Ciudadanos",
+      "type": "leader",
+      "url": "https://twitter.com/Albert_Rivera"
+    },
+    {
+      "id": "19028805",
+      "name": "Ciudadanos",
+      "party": "Ciudadanos",
+      "type": "party",
+      "url": "https://twitter.com/CiudadanosCs"
+    },
+    {
+      "id": "260788584",
+      "name": "Santiago Abascal",
+      "party": "VOX",
+      "type": "leader",
+      "url": "https://twitter.com/Santi_ABASCAL"
+    },
+    {
+      "id": "2201623465",
+      "name": "VOX",
+      "party": "VOX",
+      "type": "party",
+      "url": "https://twitter.com/vox_es"
+    }
+  ]
+}
