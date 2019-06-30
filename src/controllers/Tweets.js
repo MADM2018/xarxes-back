@@ -1,4 +1,5 @@
 const Tweet = require('../models/Tweet').default;
+const Aggregate = require('../models/Aggregate').default;
 
 module.exports.tweetsCount = (req, res, next) => {
   Tweet.find()
@@ -10,36 +11,16 @@ module.exports.tweetsCount = (req, res, next) => {
 };
 
 module.exports.retweetsCount = (req, res, next) => {
-  Tweet.aggregate([
-    {
-      $group: {
-        _id: null,
-        total: {
-          $sum: '$retweeted_status.retweet_count',
-        },
-      },
-    },
-  ]).exec((err, result) => {
+  Aggregate.find({ type: 'hashtags' }).exec((err, result) => {
     if (err) return next(err);
-    res.send({ value: result[0].total });
+    res.send({ value: result[0].value });
   });
 };
 
 module.exports.hashtagsCount = (req, res, next) => {
-  Tweet.aggregate([
-    {
-      $group: {
-        _id: null,
-        total: {
-          $sum: {
-            $cond: { if: { $isArray: '$entities.hashtags' }, then: { $size: '$entities.hashtags' }, else: '0' },
-          },
-        },
-      },
-    },
-  ]).exec((err, result) => {
+  Aggregate.find({ type: 'retweets' }).exec((err, result) => {
     if (err) return next(err);
-    res.send({ value: result[0].total });
+    res.send({ value: result[0].value });
   });
 };
 
