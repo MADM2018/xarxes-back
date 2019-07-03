@@ -118,3 +118,31 @@ module.exports.tweetsTimeLineByParty = (req, res, next) => {
     });
   });
 };
+
+module.exports.tweetsTimeLineAllProfiles = (req, res, next) => {
+  Aggregate.findOne({ type: 'tweets_month' }).exec((err, aggregate) => {
+    if (err) return next(err);
+
+    Profile.find().exec((err, profiles) => {
+      const chartsData = [];
+
+      profiles.forEach((profile) => {
+        const { id, name, party, type, url } = profile;
+
+        const monthData = aggregate.values[id];
+        const chart = parseBarChartData(monthData);
+
+        chartsData.push({
+          id,
+          name,
+          party,
+          type,
+          url,
+          chart,
+        });
+      });
+
+      res.send(chartsData);
+    });
+  });
+};
