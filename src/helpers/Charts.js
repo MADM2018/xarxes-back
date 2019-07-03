@@ -3,11 +3,7 @@ module.exports.parseBarChartData = (tweetsByMonth) => {
 
   const data = makeMockData();
 
-  if (tweetsByMonth.length === 1) {
-    data.series = [tweetsByMonth];
-  } else {
-    data.series = [...tweetsByMonth];
-  }
+  data.series = [...tweetsByMonth];
 
   return data;
 };

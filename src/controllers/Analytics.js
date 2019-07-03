@@ -130,7 +130,7 @@ module.exports.tweetsTimeLineAllProfiles = (req, res, next) => {
         const { id, name, party, type, url } = profile;
 
         const monthData = aggregate.values[id];
-        const chart = parseBarChartData(monthData);
+        const chart = parseBarChartData([monthData]);
 
         chartsData.push({
           id,
