@@ -11,6 +11,7 @@ const { connect } = require('mongoose');
 const TweetsRoutes = require('./routes/Tweets').default;
 const ProfilesRoutes = require('./routes/Profiles').default;
 const AnalyticsRoutes = require('./routes/Analytics').default;
+const MapsRoutes = require('./routes/Maps').default;
 
 const App = (config) => {
   const app = express();
@@ -35,6 +36,7 @@ loadRoutes = (app) => {
   TweetsRoutes(app);
   ProfilesRoutes(app);
   AnalyticsRoutes(app);
+  MapsRoutes(app);
 };
 
 module.exports.default = App;
