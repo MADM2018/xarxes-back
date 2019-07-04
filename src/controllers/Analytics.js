@@ -16,18 +16,18 @@ module.exports.tweetsByParty = (req, res, next) => {
     profiles.forEach((profile) => {
       const { id, name, party } = profile;
 
-      tasks.push((done) => {
-        Tweet.find({
-          'user.id': id,
-        }).exec((err, result) => {
-          response[id] = {
-            name,
-            party,
-            tweets: result.length,
-          };
-          done(err, result);
-        });
-      });
+      // tasks.push((done) => {
+      //   Tweet.find({
+      //     'user.id': id,
+      //   }).exec((err, result) => {
+      //     response[id] = {
+      //       name,
+      //       party,
+      //       tweets: result.length,
+      //     };
+      //     done(err, result);
+      //   });
+      // });
     });
 
     async.parallel(tasks, (error) => {
@@ -47,18 +47,18 @@ module.exports.tweetsByLeader = (req, res, next) => {
     profiles.forEach((profile) => {
       const { id, name, party } = profile;
 
-      tasks.push((done) => {
-        Tweet.find({
-          'user.id': id,
-        }).exec((err, result) => {
-          response[id] = {
-            name,
-            party,
-            tweets: result.length,
-          };
-          done(err, result);
-        });
-      });
+      // tasks.push((done) => {
+      //   Tweet.find({
+      //     'user.id': id,
+      //   }).exec((err, result) => {
+      //     response[id] = {
+      //       name,
+      //       party,
+      //       tweets: result.length,
+      //     };
+      //     done(err, result);
+      //   });
+      // });
     });
 
     async.parallel(tasks, (error) => {
