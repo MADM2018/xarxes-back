@@ -87,17 +87,24 @@ module.exports.tweetsTimeLineByLeader = (req, res, next) => {
 
     Profile.find({ type: 'leader' }).exec((err, profiles) => {
       const series = [];
+      const leaders = [];
+
       try {
         profiles.forEach((profile) => {
           const user_id = profile.id;
           const monthData = aggregate.values[user_id];
+
           series.push(monthData);
+          leaders.push(profile.name);
         });
       } catch (Ex) {
         console.log(Ex);
       }
 
-      const chartData = parseBarChartData(series);
+      const chartData = {
+        ...parseBarChartData(series),
+        leaders,
+      };
       res.send(chartData);
     });
   });
@@ -109,16 +116,24 @@ module.exports.tweetsTimeLineByParty = (req, res, next) => {
 
     Profile.find({ type: 'party' }).exec((err, profiles) => {
       const series = [];
+      const parties = [];
+
       try {
         profiles.forEach((profile) => {
           const user_id = profile.id;
           const monthData = aggregate.values[user_id];
+
           series.push(monthData);
+          parties.push(profile.name);
         });
       } catch (Ex) {
         console.log(Ex);
       }
-      const chartData = parseBarChartData(series);
+
+      const chartData = {
+        ...parseBarChartData(series),
+        parties,
+      };
 
       res.send(chartData);
     });
