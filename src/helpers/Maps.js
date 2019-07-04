@@ -5,13 +5,17 @@ module.exports.getMarkers = (tweetsGeoInfo) => {
 
   for (let i = 0; i < tweetsGeoInfo.length; i++) {
     const info = tweetsGeoInfo[i];
-    const { text, coordinates } = info;
+    const { text, place } = info;
 
-    if (coordinates) {
-      markers.push({
-        text,
-        coordinates,
-      });
+    if (place) {
+      try {
+        markers.push({
+          text,
+          coordinates: place.bounding_box.coordinates[0][0],
+        });
+      } catch (Ex) {
+        console.log(Ex);
+      }
     }
   }
 
