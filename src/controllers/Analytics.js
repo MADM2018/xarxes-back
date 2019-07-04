@@ -87,12 +87,15 @@ module.exports.tweetsTimeLineByLeader = (req, res, next) => {
 
     Profile.find({ type: 'leader' }).exec((err, profiles) => {
       const series = [];
-
-      profiles.forEach((profile) => {
-        const user_id = profile.id;
-        const monthData = aggregate.values[user_id];
-        series.push(monthData);
-      });
+      try {
+        profiles.forEach((profile) => {
+          const user_id = profile.id;
+          const monthData = aggregate.values[user_id];
+          series.push(monthData);
+        });
+      } catch (Ex) {
+        console.log(Ex);
+      }
 
       const chartData = parseBarChartData(series);
       res.send(chartData);
@@ -106,14 +109,17 @@ module.exports.tweetsTimeLineByParty = (req, res, next) => {
 
     Profile.find({ type: 'party' }).exec((err, profiles) => {
       const series = [];
-
-      profiles.forEach((profile) => {
-        const user_id = profile.id;
-        const monthData = aggregate.values[user_id];
-        series.push(monthData);
-      });
-
+      try {
+        profiles.forEach((profile) => {
+          const user_id = profile.id;
+          const monthData = aggregate.values[user_id];
+          series.push(monthData);
+        });
+      } catch (Ex) {
+        console.log(Ex);
+      }
       const chartData = parseBarChartData(series);
+
       res.send(chartData);
     });
   });
@@ -125,22 +131,25 @@ module.exports.tweetsTimeLineAllProfiles = (req, res, next) => {
 
     Profile.find().exec((err, profiles) => {
       const chartsData = [];
+      try {
+        profiles.forEach((profile) => {
+          const { id, name, party, type, url } = profile;
 
-      profiles.forEach((profile) => {
-        const { id, name, party, type, url } = profile;
+          const monthData = aggregate.values[id];
+          const chart = parseBarChartData([monthData]);
 
-        const monthData = aggregate.values[id];
-        const chart = parseBarChartData([monthData]);
-
-        chartsData.push({
-          id,
-          name,
-          party,
-          type,
-          url,
-          chart,
+          chartsData.push({
+            id,
+            name,
+            party,
+            type,
+            url,
+            chart,
+          });
         });
-      });
+      } catch (Ex) {
+        console.log(Ex);
+      }
 
       res.send(chartsData);
     });
